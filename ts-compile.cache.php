@@ -1,19 +1,19 @@
 <?php
 /**
   * This script is invoked from .htaccess when referencing *.ts files.
-	* $_GET['file'] will hold the requested filename.
-	*
-	* This version uses the small JG_Cache class in order
-	* to achieve simple caching advantages. The used functions should be self-explanatory.
-	* https://github.com/jonknee/JG_Cache
-	*
-	* You should use memcached or APC in production environments, of course.
-	*
-	* Checkout the other version without caching: ts-compile.php 
-	*
-	* @author ComFreek
-	* @license Public Domain
-	*/
+  * $_GET['file'] will hold the requested filename.
+  *
+  * This version uses the small JG_Cache class in order
+  * to achieve simple caching advantages. The used functions should be self-explanatory.
+  * https://github.com/jonknee/JG_Cache
+  *
+  * You should use memcached or APC in production environments, of course.
+  *
+  * Checkout the other version without caching: ts-compile.php 
+  *
+  * @author ComFreek
+  * @license Public Domain
+  */
 require('TSCompiler.class.php');
 require('JG_Cache/JG_Cache.php');
 

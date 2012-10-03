@@ -1,15 +1,15 @@
 <?php
 /**
   * This script is invoked from .htaccess when referencing *.ts files.
-	* $_GET['file'] will hold the requested filename.
-	*
-	* This version will always recompile the TypeScript file on-the-fly.
-	*
-	* Checkout the other version: ts-compile.cache.php
-	*
-	* @author ComFreek
-	* @license Public Domain
-	*/
+  * $_GET['file'] will hold the requested filename.
+  *
+  * This version will always recompile the TypeScript file on-the-fly.
+  *
+  * Checkout the other version: ts-compile.cache.php
+  *
+  * @author ComFreek
+  * @license Public Domain
+  */
 require('TSCompiler.class.php');
 
 $file = isset($_GET['file']) ? $_GET['file'] : NULL;

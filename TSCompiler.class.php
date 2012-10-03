@@ -1,40 +1,40 @@
 <?php
 /**
   * Encapsulates helper functions for calling the TypeScript compiler on the command line.
-	* @author ComFreek
-	* @license Apache License 2.0 <http://www.apache.org/licenses/LICENSE-2.0>
-	* @copyright Copyright 2012 ComFreek
-	*/
+  * @author ComFreek
+  * @license Apache License 2.0 <http://www.apache.org/licenses/LICENSE-2.0>
+  * @copyright Copyright 2012 ComFreek
+  */
 class TSCompiler {
 	/**
 	  * The temporary directory used by TSCompiler::compileToStr()
-		* @var string
-		* @see TSCompiler::compileToStr()
-		*/
+	  * @var string
+	  * @see TSCompiler::compileToStr()
+	  */
 	public static $TMP_DIR = 'tmp';
 
 	/**
 	  * Default options which shall be used in TSCompiler::buildCommand().
-		* @see TSCompiler::buildCommand()
-		*/
+	  * @see TSCompiler::buildCommand()
+	  */
 	protected static $DEFAULT_OPTIONS = array(
 	);
 
 	/**
 	  * Hide constructor because it's a static class
-		*/
+	  */
 	private function __construct() {
 	}
 
 	/**
 	  * Builds the command string.
-		*
-		* @param array $options Options. They do not conform to TypeScript's CLI options!
-		* Valid options are:
-		*  - inputFile: input *.ts file
-		*  - outputFile: output *.js file
-		* @return string The command string
-		*/
+	  *
+	  * @param array $options Options. They do not conform to TypeScript's CLI options!
+	  * Valid options are:
+	  *  - inputFile: input *.ts file
+	  *  - outputFile: output *.js file
+	  * @return string The command string
+	  */
 	protected static function buildCommand(Array $options) {
 		$cmd = 'tsc ';
 		if (isset($options['outputFile'])) {
@@ -46,12 +46,12 @@ class TSCompiler {
 	
 	/**
 	  * Compiles a given file.
-		* @param array $options Options. See TSCompiler::buildCommand() for available options.
-		* These will also be merged with TSCompiler::DEFAULT_OPTIONS
-		* @param array $errorInfo This indexed array will receive the stdin and stderr streams if the error stream was not empty.
-		* @return Returns TRUE on success and FALSE if the error stream was not empty, i.e. when an error occured.
-		* @see TSCompiler::buildCommand()
-		*/
+	  * @param array $options Options. See TSCompiler::buildCommand() for available options.
+	  * These will also be merged with TSCompiler::DEFAULT_OPTIONS
+	  * @param array $errorInfo This indexed array will receive the stdin and stderr streams if the error stream was not empty.
+	  * @return Returns TRUE on success and FALSE if the error stream was not empty, i.e. when an error occured.
+	  * @see TSCompiler::buildCommand()
+	  */
 	public static function compile(Array $options, Array &$errorInfo=array()) {
 		if (is_string($options)) {
 			$options = array_merge(self::$DEFAULT_OPTIONS, array('inputFile' => $options));
@@ -87,11 +87,11 @@ class TSCompiler {
 	
 	/**
 	  * Compiles a given file and returns the result as a string.
-		* @param array $options Options. See TSCompiler::compile().
-		* @param array $errorInfo This indexed array will receive the stdin and stderr streams if the error stream was not empty.
-		* @return Returns TRUE on success and FALSE if the error stream was not empty, i.e. when an error occured.
-		* @see TSCompiler::compile()
-		*/
+	  * @param array $options Options. See TSCompiler::compile().
+	  * @param array $errorInfo This indexed array will receive the stdin and stderr streams if the error stream was not empty.
+	  * @return Returns TRUE on success and FALSE if the error stream was not empty, i.e. when an error occured.
+	  * @see TSCompiler::compile()
+	  */
 	public static function compileToStr(Array $options, Array &$errorInfo=array()) {
 		$outputFile = tempnam(self::$TMP_DIR, 'TS_');
 		$options = array(
