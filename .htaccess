@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteRule (.*).cts(.*)$ ts-compile.cache.php?file=$1.ts&opt=$2
+RewriteRule (.*).ts(.*)$ ts-compile.php?file=$1.ts&opt=$2

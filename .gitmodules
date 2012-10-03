@@ -1,0 +1,3 @@
+[submodule "JG_Cache"]
+	path = JG_Cache
+	url = https://github.com/jonknee/JG_Cache.git
